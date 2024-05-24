@@ -1,0 +1,142 @@
+{
+  "address": "0x18B02000D2bA5E45F27419830576009ADdd0BB82",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_addresses",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_amounts",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_totalAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "multisendERC20",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_nft",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_addresses",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_tokenIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "multisendERC721",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_addresses",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_amounts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "multisendETH",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x08ea1a8840b3bf2696ffc487f468ab4d3824696c4b3b473f6a5bb2d46dbe83b3",
+  "receipt": {
+    "to": null,
+    "from": "0x08a74A0075a2C3A786A84439812a141C6C8b73f3",
+    "contractAddress": "0x18B02000D2bA5E45F27419830576009ADdd0BB82",
+    "transactionIndex": 0,
+    "gasUsed": "255128",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xedb2fc634d7e2faa45cf9b7ea0a94ac6d132966e492c3daf178b06f270d0a3eb",
+    "transactionHash": "0x08ea1a8840b3bf2696ffc487f468ab4d3824696c4b3b473f6a5bb2d46dbe83b3",
+    "logs": [],
+    "blockNumber": 852,
+    "cumulativeGasUsed": "255128",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "be11fae09889417ddef9523c6919233a",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.24+commit.e11b9ed9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"_addresses\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_amounts\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256\",\"name\":\"_totalAmount\",\"type\":\"uint256\"}],\"name\":\"multisendERC20\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_nft\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"_addresses\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"multisendERC721\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_addresses\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_amounts\",\"type\":\"uint256[]\"}],\"name\":\"multisendETH\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"multisendERC20(address,address[],uint256[],uint256)\":{\"params\":{\"_addresses\":\"The addresses to Multisend to\",\"_amounts\":\"The amounts to Multisend\",\"_token\":\"The address of the ERC20 contract\",\"_totalAmount\":\"The total amount to Multisend\"}},\"multisendERC721(address,address[],uint256[])\":{\"params\":{\"_addresses\":\"The addresses to Multisend to\",\"_nft\":\"The address of the ERC721 contract\",\"_tokenIds\":\"The tokenIds to Multisend\"}},\"multisendETH(address[],uint256[])\":{\"params\":{\"_addresses\":\"The addresses to Multisend to\",\"_amounts\":\"The amounts to Multisend\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"multisendERC20(address,address[],uint256[],uint256)\":{\"notice\":\"Multisend ERC20 tokens to a list of addresses\"},\"multisendERC721(address,address[],uint256[])\":{\"notice\":\"Multisend ERC721 tokens to a list of addresses\"},\"multisendETH(address[],uint256[])\":{\"notice\":\"Multisend ETH to a list of addresses\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/MultiSender.sol\":\"Multisender\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/MultiSender.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity 0.8.24;\\r\\n\\r\\ncontract Multisender {\\r\\n    /**\\r\\n     * @notice Multisend ERC721 tokens to a list of addresses\\r\\n     * @param _nft The address of the ERC721 contract\\r\\n     * @param _addresses The addresses to Multisend to\\r\\n     * @param _tokenIds The tokenIds to Multisend\\r\\n     */\\r\\n    function multisendERC721(\\r\\n        address _nft,\\r\\n        address[] calldata _addresses,\\r\\n        uint256[] calldata _tokenIds\\r\\n    ) external payable {\\r\\n        assembly {\\r\\n            // Check that the number of addresses matches the number of tokenIds\\r\\n            if iszero(eq(_tokenIds.length, _addresses.length)) {\\r\\n                revert(0, 0)\\r\\n            }\\r\\n            // transferFrom(address from, address to, uint256 tokenId)\\r\\n            mstore(0x00, hex\\\"23b872dd\\\")\\r\\n            // from address\\r\\n            mstore(0x04, caller())\\r\\n\\r\\n            // end of array\\r\\n            let end := add(_addresses.offset, shl(5, _addresses.length))\\r\\n            // diff = _addresses.offset - _tokenIds.offset\\r\\n            let diff := sub(_addresses.offset, _tokenIds.offset)\\r\\n\\r\\n            // Loop through the addresses\\r\\n            for {\\r\\n                let addressOffset := _addresses.offset\\r\\n            } 1 {\\r\\n\\r\\n            } {\\r\\n                // to address\\r\\n                mstore(0x24, calldataload(addressOffset))\\r\\n                // tokenId\\r\\n                mstore(0x44, calldataload(sub(addressOffset, diff)))\\r\\n                // transfer the token\\r\\n                if iszero(call(gas(), _nft, 0, 0x00, 0x64, 0, 0)) {\\r\\n                    revert(0, 0)\\r\\n                }\\r\\n                // increment the address offset\\r\\n                addressOffset := add(addressOffset, 0x20)\\r\\n                // if addressOffset >= end, break\\r\\n                if iszero(lt(addressOffset, end)) {\\r\\n                    break\\r\\n                }\\r\\n            }\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Multisend ERC20 tokens to a list of addresses\\r\\n     * @param _token The address of the ERC20 contract\\r\\n     * @param _addresses The addresses to Multisend to\\r\\n     * @param _amounts The amounts to Multisend\\r\\n     * @param _totalAmount The total amount to Multisend\\r\\n     */\\r\\n    function multisendERC20(\\r\\n        address _token,\\r\\n        address[] calldata _addresses,\\r\\n        uint256[] calldata _amounts,\\r\\n        uint256 _totalAmount\\r\\n    ) external payable {\\r\\n        assembly {\\r\\n            // Check that the number of addresses matches the number of amounts\\r\\n            if iszero(eq(_amounts.length, _addresses.length)) {\\r\\n                revert(0, 0)\\r\\n            }\\r\\n\\r\\n            // transferFrom(address from, address to, uint256 amount)\\r\\n            mstore(0x00, hex\\\"23b872dd\\\")\\r\\n            // from address\\r\\n            mstore(0x04, caller())\\r\\n            // to address (this contract)\\r\\n            mstore(0x24, address())\\r\\n            // total amount\\r\\n            mstore(0x44, _totalAmount)\\r\\n\\r\\n            // transfer total amount to this contract\\r\\n            if iszero(call(gas(), _token, 0, 0x00, 0x64, 0, 0)) {\\r\\n                revert(0, 0)\\r\\n            }\\r\\n\\r\\n            // transfer(address to, uint256 value)\\r\\n            mstore(0x00, hex\\\"a9059cbb\\\")\\r\\n\\r\\n            // end of array\\r\\n            let end := add(_addresses.offset, shl(5, _addresses.length))\\r\\n            // diff = _addresses.offset - _amounts.offset\\r\\n            let diff := sub(_addresses.offset, _amounts.offset)\\r\\n\\r\\n            // Loop through the addresses\\r\\n            for {\\r\\n                let addressOffset := _addresses.offset\\r\\n            } 1 {\\r\\n\\r\\n            } {\\r\\n                // to address\\r\\n                mstore(0x04, calldataload(addressOffset))\\r\\n                // amount\\r\\n                mstore(0x24, calldataload(sub(addressOffset, diff)))\\r\\n                // transfer the tokens\\r\\n                if iszero(call(gas(), _token, 0, 0x00, 0x64, 0, 0)) {\\r\\n                    revert(0, 0)\\r\\n                }\\r\\n                // increment the address offset\\r\\n                addressOffset := add(addressOffset, 0x20)\\r\\n                // if addressOffset >= end, break\\r\\n                if iszero(lt(addressOffset, end)) {\\r\\n                    break\\r\\n                }\\r\\n            }\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Multisend ETH to a list of addresses\\r\\n     * @param _addresses The addresses to Multisend to\\r\\n     * @param _amounts The amounts to Multisend\\r\\n     */\\r\\n    function multisendETH(\\r\\n        address[] calldata _addresses,\\r\\n        uint256[] calldata _amounts\\r\\n    ) external payable {\\r\\n        assembly {\\r\\n            // Check that the number of addresses matches the number of amounts\\r\\n            if iszero(eq(_amounts.length, _addresses.length)) {\\r\\n                revert(0, 0)\\r\\n            }\\r\\n\\r\\n            // iterator\\r\\n            let i := _addresses.offset\\r\\n            // end of array\\r\\n            let end := add(i, shl(5, _addresses.length))\\r\\n            // diff = _addresses.offset - _amounts.offset\\r\\n            let diff := sub(_amounts.offset, _addresses.offset)\\r\\n\\r\\n            // Loop through the addresses\\r\\n            for {\\r\\n\\r\\n            } 1 {\\r\\n\\r\\n            } {\\r\\n                // transfer the ETH\\r\\n                if iszero(\\r\\n                    call(\\r\\n                        gas(),\\r\\n                        calldataload(i),\\r\\n                        calldataload(add(i, diff)),\\r\\n                        0x00,\\r\\n                        0x00,\\r\\n                        0x00,\\r\\n                        0x00\\r\\n                    )\\r\\n                ) {\\r\\n                    revert(0x00, 0x00)\\r\\n                }\\r\\n                // increment the iterator\\r\\n                i := add(i, 0x20)\\r\\n                // if i >= end, break\\r\\n                if eq(end, i) {\\r\\n                    break\\r\\n                }\\r\\n            }\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xc9f07399eabf390224952325ceae9da574a2da2acfac003b06814306b303a47a\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506103a8806100206000396000f3fe6080604052600436106100345760003560e01c806308c89f7e14610039578063b1e242e81461004e578063bfbe346a14610061575b600080fd5b61004c6100473660046101fc565b610074565b005b61004c61005c36600461027d565b6100ce565b61004c61006f366004610306565b610150565b82811461008057600080fd5b6323b872dd60e01b600052336004528260051b8401828503855b80356024528181033560445260008060646000808c5af16100ba57600080fd5b60200182811061009a575050505050505050565b8382146100da57600080fd5b6323b872dd60e01b60005233600452306024528060445260008060646000808a5af161010557600080fd5b63a9059cbb60e01b6000528360051b8501838603865b80356004528181033560245260008060646000808d5af161013b57600080fd5b60200182811061011b57505050505050505050565b82811461015c57600080fd5b838360051b81018584035b6000806000808487013587355af161017e57600080fd5b6020830192508282036101675750505050505050565b80356001600160a01b03811681146101ab57600080fd5b919050565b60008083601f8401126101c257600080fd5b50813567ffffffffffffffff8111156101da57600080fd5b6020830191508360208260051b85010111156101f557600080fd5b9250929050565b60008060008060006060868803121561021457600080fd5b61021d86610194565b9450602086013567ffffffffffffffff8082111561023a57600080fd5b61024689838a016101b0565b9096509450604088013591508082111561025f57600080fd5b5061026c888289016101b0565b969995985093965092949392505050565b6000806000806000806080878903121561029657600080fd5b61029f87610194565b9550602087013567ffffffffffffffff808211156102bc57600080fd5b6102c88a838b016101b0565b909750955060408901359150808211156102e157600080fd5b506102ee89828a016101b0565b979a9699509497949695606090950135949350505050565b6000806000806040858703121561031c57600080fd5b843567ffffffffffffffff8082111561033457600080fd5b610340888389016101b0565b9096509450602087013591508082111561035957600080fd5b50610366878288016101b0565b9598949750955050505056fea26469706673582212200a132697d3799951ab653a0d95c71b464d63b326157a15825769d91e0d6c45e164736f6c63430008180033",
+  "deployedBytecode": "0x6080604052600436106100345760003560e01c806308c89f7e14610039578063b1e242e81461004e578063bfbe346a14610061575b600080fd5b61004c6100473660046101fc565b610074565b005b61004c61005c36600461027d565b6100ce565b61004c61006f366004610306565b610150565b82811461008057600080fd5b6323b872dd60e01b600052336004528260051b8401828503855b80356024528181033560445260008060646000808c5af16100ba57600080fd5b60200182811061009a575050505050505050565b8382146100da57600080fd5b6323b872dd60e01b60005233600452306024528060445260008060646000808a5af161010557600080fd5b63a9059cbb60e01b6000528360051b8501838603865b80356004528181033560245260008060646000808d5af161013b57600080fd5b60200182811061011b57505050505050505050565b82811461015c57600080fd5b838360051b81018584035b6000806000808487013587355af161017e57600080fd5b6020830192508282036101675750505050505050565b80356001600160a01b03811681146101ab57600080fd5b919050565b60008083601f8401126101c257600080fd5b50813567ffffffffffffffff8111156101da57600080fd5b6020830191508360208260051b85010111156101f557600080fd5b9250929050565b60008060008060006060868803121561021457600080fd5b61021d86610194565b9450602086013567ffffffffffffffff8082111561023a57600080fd5b61024689838a016101b0565b9096509450604088013591508082111561025f57600080fd5b5061026c888289016101b0565b969995985093965092949392505050565b6000806000806000806080878903121561029657600080fd5b61029f87610194565b9550602087013567ffffffffffffffff808211156102bc57600080fd5b6102c88a838b016101b0565b909750955060408901359150808211156102e157600080fd5b506102ee89828a016101b0565b979a9699509497949695606090950135949350505050565b6000806000806040858703121561031c57600080fd5b843567ffffffffffffffff8082111561033457600080fd5b610340888389016101b0565b9096509450602087013591508082111561035957600080fd5b50610366878288016101b0565b9598949750955050505056fea26469706673582212200a132697d3799951ab653a0d95c71b464d63b326157a15825769d91e0d6c45e164736f6c63430008180033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "multisendERC20(address,address[],uint256[],uint256)": {
+        "params": {
+          "_addresses": "The addresses to Multisend to",
+          "_amounts": "The amounts to Multisend",
+          "_token": "The address of the ERC20 contract",
+          "_totalAmount": "The total amount to Multisend"
+        }
+      },
+      "multisendERC721(address,address[],uint256[])": {
+        "params": {
+          "_addresses": "The addresses to Multisend to",
+          "_nft": "The address of the ERC721 contract",
+          "_tokenIds": "The tokenIds to Multisend"
+        }
+      },
+      "multisendETH(address[],uint256[])": {
+        "params": {
+          "_addresses": "The addresses to Multisend to",
+          "_amounts": "The amounts to Multisend"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "multisendERC20(address,address[],uint256[],uint256)": {
+        "notice": "Multisend ERC20 tokens to a list of addresses"
+      },
+      "multisendERC721(address,address[],uint256[])": {
+        "notice": "Multisend ERC721 tokens to a list of addresses"
+      },
+      "multisendETH(address[],uint256[])": {
+        "notice": "Multisend ETH to a list of addresses"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

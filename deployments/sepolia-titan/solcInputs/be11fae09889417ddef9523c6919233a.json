@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/MultiSender.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.8.24;\r\n\r\ncontract Multisender {\r\n    /**\r\n     * @notice Multisend ERC721 tokens to a list of addresses\r\n     * @param _nft The address of the ERC721 contract\r\n     * @param _addresses The addresses to Multisend to\r\n     * @param _tokenIds The tokenIds to Multisend\r\n     */\r\n    function multisendERC721(\r\n        address _nft,\r\n        address[] calldata _addresses,\r\n        uint256[] calldata _tokenIds\r\n    ) external payable {\r\n        assembly {\r\n            // Check that the number of addresses matches the number of tokenIds\r\n            if iszero(eq(_tokenIds.length, _addresses.length)) {\r\n                revert(0, 0)\r\n            }\r\n            // transferFrom(address from, address to, uint256 tokenId)\r\n            mstore(0x00, hex\"23b872dd\")\r\n            // from address\r\n            mstore(0x04, caller())\r\n\r\n            // end of array\r\n            let end := add(_addresses.offset, shl(5, _addresses.length))\r\n            // diff = _addresses.offset - _tokenIds.offset\r\n            let diff := sub(_addresses.offset, _tokenIds.offset)\r\n\r\n            // Loop through the addresses\r\n            for {\r\n                let addressOffset := _addresses.offset\r\n            } 1 {\r\n\r\n            } {\r\n                // to address\r\n                mstore(0x24, calldataload(addressOffset))\r\n                // tokenId\r\n                mstore(0x44, calldataload(sub(addressOffset, diff)))\r\n                // transfer the token\r\n                if iszero(call(gas(), _nft, 0, 0x00, 0x64, 0, 0)) {\r\n                    revert(0, 0)\r\n                }\r\n                // increment the address offset\r\n                addressOffset := add(addressOffset, 0x20)\r\n                // if addressOffset >= end, break\r\n                if iszero(lt(addressOffset, end)) {\r\n                    break\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * @notice Multisend ERC20 tokens to a list of addresses\r\n     * @param _token The address of the ERC20 contract\r\n     * @param _addresses The addresses to Multisend to\r\n     * @param _amounts The amounts to Multisend\r\n     * @param _totalAmount The total amount to Multisend\r\n     */\r\n    function multisendERC20(\r\n        address _token,\r\n        address[] calldata _addresses,\r\n        uint256[] calldata _amounts,\r\n        uint256 _totalAmount\r\n    ) external payable {\r\n        assembly {\r\n            // Check that the number of addresses matches the number of amounts\r\n            if iszero(eq(_amounts.length, _addresses.length)) {\r\n                revert(0, 0)\r\n            }\r\n\r\n            // transferFrom(address from, address to, uint256 amount)\r\n            mstore(0x00, hex\"23b872dd\")\r\n            // from address\r\n            mstore(0x04, caller())\r\n            // to address (this contract)\r\n            mstore(0x24, address())\r\n            // total amount\r\n            mstore(0x44, _totalAmount)\r\n\r\n            // transfer total amount to this contract\r\n            if iszero(call(gas(), _token, 0, 0x00, 0x64, 0, 0)) {\r\n                revert(0, 0)\r\n            }\r\n\r\n            // transfer(address to, uint256 value)\r\n            mstore(0x00, hex\"a9059cbb\")\r\n\r\n            // end of array\r\n            let end := add(_addresses.offset, shl(5, _addresses.length))\r\n            // diff = _addresses.offset - _amounts.offset\r\n            let diff := sub(_addresses.offset, _amounts.offset)\r\n\r\n            // Loop through the addresses\r\n            for {\r\n                let addressOffset := _addresses.offset\r\n            } 1 {\r\n\r\n            } {\r\n                // to address\r\n                mstore(0x04, calldataload(addressOffset))\r\n                // amount\r\n                mstore(0x24, calldataload(sub(addressOffset, diff)))\r\n                // transfer the tokens\r\n                if iszero(call(gas(), _token, 0, 0x00, 0x64, 0, 0)) {\r\n                    revert(0, 0)\r\n                }\r\n                // increment the address offset\r\n                addressOffset := add(addressOffset, 0x20)\r\n                // if addressOffset >= end, break\r\n                if iszero(lt(addressOffset, end)) {\r\n                    break\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * @notice Multisend ETH to a list of addresses\r\n     * @param _addresses The addresses to Multisend to\r\n     * @param _amounts The amounts to Multisend\r\n     */\r\n    function multisendETH(\r\n        address[] calldata _addresses,\r\n        uint256[] calldata _amounts\r\n    ) external payable {\r\n        assembly {\r\n            // Check that the number of addresses matches the number of amounts\r\n            if iszero(eq(_amounts.length, _addresses.length)) {\r\n                revert(0, 0)\r\n            }\r\n\r\n            // iterator\r\n            let i := _addresses.offset\r\n            // end of array\r\n            let end := add(i, shl(5, _addresses.length))\r\n            // diff = _addresses.offset - _amounts.offset\r\n            let diff := sub(_amounts.offset, _addresses.offset)\r\n\r\n            // Loop through the addresses\r\n            for {\r\n\r\n            } 1 {\r\n\r\n            } {\r\n                // transfer the ETH\r\n                if iszero(\r\n                    call(\r\n                        gas(),\r\n                        calldataload(i),\r\n                        calldataload(add(i, diff)),\r\n                        0x00,\r\n                        0x00,\r\n                        0x00,\r\n                        0x00\r\n                    )\r\n                ) {\r\n                    revert(0x00, 0x00)\r\n                }\r\n                // increment the iterator\r\n                i := add(i, 0x20)\r\n                // if i >= end, break\r\n                if eq(end, i) {\r\n                    break\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
