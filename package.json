@@ -1,0 +1,36 @@
+{
+  "name": "hardhat-project",
+  "devDependencies": {
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "6.9.0",
+    "hardhat": "^2.19.2",
+    "hardhat-contract-sizer": "^2.10.0",
+    "hardhat-deploy": "^0.11.44",
+    "hardhat-deploy-ethers": "^0.4.1",
+    "hardhat-gas-reporter": "^1.0.9",
+    "prettier": "^2.3.2",
+    "prettier-plugin-solidity": "^1.0.0-beta.16"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.6",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
+    "@nomicfoundation/hardhat-verify": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/contracts": "^5.0.0",
+    "@openzeppelin/contracts-upgradeable": "^5.0.0",
+    "@openzeppelin/hardhat-upgrades": "^2.5.0",
+    "dotenv": "^16.4.5"
+  },
+  "scripts": {
+    "test": "npx hardhat test test/CoreGameContract.test.js",
+    "test:local": "npx hardhat test  --network hardhat",
+    "test:test-deploy": "npx hardhat run scripts/sample-script.js --network hardhat",
+    "bscTest:test-deploy": "npx hardhat run scripts/sample-script.js --network bscTest",
+    "compile": "npx hardhat compile",
+    "deploy": "hardhat --network sepolia-titan deploy",
+    "verify": "hardhat --network sepolia-titan etherscan-verify --solc-input --api-url",
+    "export": "hardhat --network sepolia-titan export --export exports/sepolia-titan.json",
+    "prettier": "prettier --write test/**/*.js && prettier --write scripts/**/*.js && prettier --write contracts/**/*.sol"
+  }
+}
