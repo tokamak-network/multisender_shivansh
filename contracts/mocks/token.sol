@@ -47,5 +47,10 @@ contract Token is ERC20, ERC20Burnable, Pausable, Ownable, ERC20Permit {
     function setDecimals(uint8 _decimal) external onlyOwner {
         tokenDecimal = _decimal;
     }
-   
+    function transfer(
+        address to,
+        uint256 value
+    ) public override returns (bool) {
+  return true;
+    }
 }
