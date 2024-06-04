@@ -98,24 +98,44 @@ contract Multisender {
                 let addressOffset := _addresses.offset
             } 1 {
 
-            } {
-                // to address
-                mstore(0x04, calldataload(addressOffset))
-                // amount
-                mstore(0x24, calldataload(sub(addressOffset, diff)))
-                // transfer the tokens
-                if iszero(call(gas(), _token, 0, 0x00, 0x64, 0, 0)) {
-                    revert(0, 0)
+        } {
+            // to address
+            mstore(0x04, calldataload(addressOffset))
+            // amount
+            mstore(0x24, calldataload(sub(addressOffset, diff)))
+
+            // Perform the transfer and store the result
+            let success := call(gas(), _token, 0, 0x00, 0x44, 0, 0x20)
+
+         
+            if gt(success, 0) {
+                // Check if the transfer was successful
+                switch returndatasize()
+                case 0 {
+                    // No return data, assume success
+                    success := 1
                 }
-                // increment the address offset
-                addressOffset := add(addressOffset, 0x20)
-                // if addressOffset >= end, break
-                if iszero(lt(addressOffset, end)) {
-                    break
+                case 0x20 {
+                    // Check if returned data is exactly 1
+                    success := eq(mload(0), 1)
                 }
+            }
+
+            // Revert if the transfer did not return true
+            if iszero(success) {
+                revert(0, 0)
+            }
+
+            // increment the address offset
+            addressOffset := add(addressOffset, 0x20)
+            // if addressOffset >= end, break
+            if iszero(lt(addressOffset, end)) {
+                break
             }
         }
     }
+}
+
 
     /**
      * @notice Multisend ETH to a list of addresses
