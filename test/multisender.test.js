@@ -35,26 +35,22 @@ describe("Multisender", function () {
     });
 
     describe("Multisend Tokens", function () {
-        // it("will send Ton", async function () {
-        //     await ton.approve(multisender.target, ethers.parseEther('100'))
-        //     expect(await multisender.multisendERC20(ton.target, [user1.address, user2.address, user3.address, user4.address, user5.address, user6.address, user7.address, user8.address, user9.address, user10.address], [ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10')], ethers.parseEther('100'))).not.to.be.reverted
-        // });
-        // it("will send USDC", async function () {
-        //     await usdc.approve(multisender.target, ethers.parseUnits('100'));
-        //     expect(await multisender.multisendERC20(usdc.target, [user1.address, user2.address, user3.address, user4.address, user5.address, user6.address, user7.address, user8.address, user9.address, user10.address], [ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6)], ethers.parseUnits('100', 6))).not.to.be.reverted
-        // });
-        // it("will send USDT", async function () {
-        //     await usdt.approve(multisender.target, ethers.parseUnits('100'));
-        //     expect(await multisender.multisendERC20(usdt.target, [user1.address, user2.address, user3.address, user4.address, user5.address, user6.address, user7.address, user8.address, user9.address, user10.address], [ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6)], ethers.parseUnits('100', 6))).not.to.be.reverted
-        // });
+        it("will send Ton", async function () {
+            await ton.approve(multisender.target, ethers.parseEther('100'))
+            expect(await multisender.multisendERC20(ton.target, [user1.address, user2.address, user3.address, user4.address, user5.address, user6.address, user7.address, user8.address, user9.address, user10.address], [ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10')], ethers.parseEther('100'))).not.to.be.reverted
+        });
+        it("will send USDC", async function () {
+            await usdc.approve(multisender.target, ethers.parseUnits('100'));
+            expect(await multisender.multisendERC20(usdc.target, [user1.address, user2.address, user3.address, user4.address, user5.address, user6.address, user7.address, user8.address, user9.address, user10.address], [ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6)], ethers.parseUnits('100', 6))).not.to.be.reverted
+        });
+        it("will send USDT", async function () {
+            await usdt.approve(multisender.target, ethers.parseUnits('100'));
+            expect(await multisender.multisendERC20(usdt.target, [user1.address, user2.address, user3.address, user4.address, user5.address, user6.address, user7.address, user8.address, user9.address, user10.address], [ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6), ethers.parseUnits('10', 6)], ethers.parseUnits('100', 6))).not.to.be.reverted
+        });
 
-        // it("will send Mock Token", async function () {
-        //     await mock.approve(multisender.target, ethers.parseEther('100'))
-        //     expect(await multisender.multisendERC20(mock.target, [user1.address, user2.address, user3.address, user4.address, user5.address, user6.address, user7.address, user8.address, user9.address, user10.address], [ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10')], ethers.parseEther('100'))).not.to.be.reverted
-        // });
         it("will send Mock Token", async function () {
             await mock.approve(multisender.target, ethers.parseEther('100'))
-            expect(await multisender.multisendERC20(mock.target, [user1.address], [ethers.parseEther('10')], ethers.parseEther('10'))).not.to.be.reverted
+            expect(await multisender.multisendERC20(mock.target, [user1.address, user2.address, user3.address, user4.address, user5.address, user6.address, user7.address, user8.address, user9.address, user10.address], [ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10'), ethers.parseEther('10')], ethers.parseEther('100'))).not.to.be.reverted
         });
     });
 });
