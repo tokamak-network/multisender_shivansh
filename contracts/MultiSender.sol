@@ -39,7 +39,11 @@ contract Multisender is ReentrancyGuardUpgradeable {
 
         for (uint256 i = 0; i < _addresses.length; i++) {
             // Transfer the token
-            IERC721(_nft).safeTransferFrom(msg.sender, _addresses[i], _tokenIds[i]);
+            IERC721(_nft).safeTransferFrom(
+                msg.sender,
+                _addresses[i],
+                _tokenIds[i]
+            );
         }
         emit MultisendERC721(_nft, _addresses, _tokenIds);
     }
@@ -68,9 +72,15 @@ contract Multisender is ReentrancyGuardUpgradeable {
             _totalAmount
         );
 
+        uint256 amount;
+
         for (uint256 i = 0; i < _addresses.length; i++) {
             // Perform the transfer
             IERC20(_token).safeTransfer(_addresses[i], _amounts[i]);
+            amount += _amounts[i];
+        }
+        if (_totalAmount > amount) {
+            IERC20(_token).safeTransfer(msg.sender, _totalAmount - amount);
         }
         emit MultisendERC20(_token, _addresses, _amounts);
     }
@@ -85,10 +95,16 @@ contract Multisender is ReentrancyGuardUpgradeable {
         uint256[] calldata _amounts
     ) external payable nonReentrant {
         require(_addresses.length == _amounts.length, "Arrays length mismatch");
+        uint256 amount;
 
         for (uint256 i = 0; i < _addresses.length; i++) {
             // Transfer ETH to each address
             (bool success, ) = _addresses[i].call{value: _amounts[i]}("");
+            require(success, "ETH transfer failed");
+            amount += _amounts[i];
+        }
+        if (msg.value > amount) {
+            (bool success, ) = msg.sender.call{value: msg.value-amount}("");
             require(success, "ETH transfer failed");
         }
         emit MultisendETH(_addresses, _amounts);
