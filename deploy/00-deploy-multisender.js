@@ -7,7 +7,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
   const { deployer, proxyAdminOwner } = await getNamedAccounts();
   const owner = deployer
 
-  const coreGameContract = await deploy("Multisender", {
+  const Multisender = await deploy("Multisender", {
     from: deployer,
     contract: "Multisender",
     log: true,
@@ -18,8 +18,8 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     },
   });
 
-  console.log(`CoreGameContract usdt deployed at ${coreGameContract.address}`);
+  console.log(`Multisender usdt deployed at ${Multisender.address}`);
 };
 
-module.exports.tags = ["CoreGameContract", "Animera"]
+module.exports.tags = ["Multisender"]
 
