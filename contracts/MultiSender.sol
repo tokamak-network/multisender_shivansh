@@ -98,13 +98,14 @@ contract Multisender is ReentrancyGuardUpgradeable {
         uint256 amount;
 
         for (uint256 i = 0; i < _addresses.length; i++) {
+            require(_addresses[i] != address(0), "Invalid Receiver");
             // Transfer ETH to each address
             (bool success, ) = _addresses[i].call{value: _amounts[i]}("");
             require(success, "ETH transfer failed");
             amount += _amounts[i];
         }
         if (msg.value > amount) {
-            (bool success, ) = msg.sender.call{value: msg.value-amount}("");
+            (bool success, ) = msg.sender.call{value: msg.value - amount}("");
             require(success, "ETH transfer failed");
         }
         emit MultisendETH(_addresses, _amounts);
